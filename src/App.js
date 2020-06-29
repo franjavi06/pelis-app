@@ -6,6 +6,7 @@ import PelisContainer from './components/PelisContainer';
 function App() {
   return (
     <>
+      <h1>Pelis App</h1>
       <PelisContainer></PelisContainer>
     </>
   );

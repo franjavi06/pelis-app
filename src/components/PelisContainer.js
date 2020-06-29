@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Peli from './Peli';
 import {getPelisBySearch} from '../services/pelis'
+import Search from './Search';
 
 export class PelisContainer extends Component {
 
@@ -30,7 +31,10 @@ export class PelisContainer extends Component {
         }
         
         return (
-            pelis.map( (peli)=><Peli Title={peli.Title} Poster={peli.Poster} key={peli.imdbID}></Peli> )
+            <>
+                <Search></Search>
+                {pelis.map( (peli)=><Peli Title={peli.Title} Poster={peli.Poster} key={peli.imdbID}></Peli> )}
+            </>
         )
     }
 }
