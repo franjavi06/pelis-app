@@ -22,6 +22,10 @@ export class PelisContainer extends Component {
 
     }
 
+    handleSearch= (e)=>{
+        console.log(e);
+    }
+
     render() {
 
         const {pelis,cargando} = this.state;
@@ -32,7 +36,7 @@ export class PelisContainer extends Component {
         
         return (
             <>
-                <Search></Search>
+                <Search handleSearch={this.handleSearch}></Search>
                 {pelis.map( (peli)=><Peli Title={peli.Title} Poster={peli.Poster} key={peli.imdbID}></Peli> )}
             </>
         )
