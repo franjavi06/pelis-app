@@ -13,10 +13,12 @@ export default class Search extends Component {
 
     render() {
         const {handleSearch} = this.props
+        const {search} = this.state
+
         return (
             <div className="search-container">
-                <input className="search-input" type="text" onChange={this.handleChange} value={this.state.search}/>
-                <button className="search-btn" onClick={handleSearch}>Search</button>
+                <input className="search-input" type="text" onChange={this.handleChange} value={search}/>
+                <button className="search-btn" onClick={()=> handleSearch(search)}>Search</button>
             </div>
         )
     }

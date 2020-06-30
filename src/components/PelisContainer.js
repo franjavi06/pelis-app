@@ -22,8 +22,10 @@ export class PelisContainer extends Component {
 
     }
 
-    handleSearch= (e)=>{
-        console.log(e);
+    handleSearch= async (search) => {
+        const responseJson = await getPelisBySearch(search) 
+        console.log(responseJson)
+        this.setState({pelis: responseJson.Search})
     }
 
     render() {
