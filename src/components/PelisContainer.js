@@ -23,22 +23,28 @@ export class PelisContainer extends Component {
     }
 
     handleSearch= async (search) => {
+        this.setState({cargando: true})
         const responseJson = await getPelisBySearch(search) 
         console.log(responseJson)
-        this.setState({pelis: responseJson.Search})
+        if(responseJson.Response==="True")
+            this.setState({cargando: false, pelis: responseJson.Search})
+        else
+            this.setState({cargando: false, pelis: []})
     }
 
     render() {
 
-        const {pelis,cargando} = this.state;
-
-        if(cargando){
-            return <>Loading...</>
-        }
-        
+        const {pelis,cargando} = this.state;        
         return (
             <>
                 <Search handleSearch={this.handleSearch}></Search>
+                {
+                    //cargando && 'Loading...'
+                    cargando?'Loading':''
+                }
+                {
+                    (!pelis.length && !cargando) && 'No pelis founded try another search'
+                }
                 {pelis.map( (peli)=><Peli Title={peli.Title} Poster={peli.Poster} key={peli.imdbID}></Peli> )}
             </>
         )
