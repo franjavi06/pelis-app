@@ -1,7 +1,7 @@
+import axios from 'axios'
 
-
-const BASEURL = 'http://www.omdbapi.com/'
-const APIKEY = 'ebac882e'
+const BASEURL = process.env.REACT_APP_BASEURL;
+const APIKEY = process.env.REACT_APP_APIKEY;
 
 
 export async function getPelisBySearch(q) {
@@ -12,6 +12,16 @@ export async function getPelisBySearch(q) {
     return responseJson
 }
 
-export default{
-    getPelisBySearch
+export async function getPelisQ(q){
+    let SEARCH = q
+    try{
+        const response = await axios({
+            url: `${BASEURL}?apikey=${APIKEY}&s=${SEARCH}`,
+            method: 'GET'
+        })
+        return response
+    }catch(e){
+        console.log(e)
+    }
 }
+

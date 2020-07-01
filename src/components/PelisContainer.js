@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Peli from './Peli';
-import {getPelisBySearch} from '../services/pelis'
+import {getPelisBySearch,getPelisQ} from '../services/pelis'
 import Search from './Search';
 
 export class PelisContainer extends Component {
@@ -18,6 +18,8 @@ export class PelisContainer extends Component {
         
        const responseJson = await getPelisBySearch('star')
        console.log(responseJson)
+       const responseJson2 = await getPelisQ('iron')
+       console.log(responseJson2)       
        this.setState({pelis: responseJson.Search, cargando: false});
 
     }
